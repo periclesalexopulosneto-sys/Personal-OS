@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Personal OS</title>
+
+  <meta name="theme-color" content="#EFEBE3" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="Personal OS" />
+  <meta name="mobile-web-app-capable" content="yes" />
+
+  <link rel="manifest" href="./manifest.json" />
+  <link rel="apple-touch-icon" href="./icon-180.png" />
+  <link rel="icon" href="./icon-192.png" />
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+
+  <main class="app">
+
+    <!-- HOJE ------------------------------------------------------ -->
+    <section id="screen-hoje" class="screen screen--active" aria-label="Hoje">
+      <header class="hoje-header">
+        <p id="hoje-greeting" class="hoje-greeting">Boa tarde, Péricles</p>
+        <p id="hoje-date" class="hoje-date">Segunda, 14 de setembro</p>
+      </header>
+
+      <div class="empty-state">
+        <div class="empty-state__icon">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M12 3l8 6v11a1 1 0 0 1-1 1h-5v-6H10v6H5a1 1 0 0 1-1-1V9l8-6z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+        </div>
+        <div>
+          <p class="empty-state__title">Fundação instalada</p>
+          <p class="empty-state__body">
+            Captura, Agora, Hábitos e Rotina chegam nas próximas fases.
+            Por enquanto, esta tela confirma que a navegação e o banco de dados estão funcionando.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAREFAS ----------------------------------------------------- -->
+    <section id="screen-tarefas" class="screen" aria-label="Tarefas">
+      <header class="screen-header">
+        <h1>Tarefas</h1>
+      </header>
+
+      <div class="empty-state">
+        <div class="empty-state__icon" style="background: var(--color-hoje-soft); color: var(--color-hoje);">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M5 6h14M5 12h14M5 18h9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </div>
+        <div>
+          <p class="empty-state__title">Ainda não há tarefas</p>
+          <p class="empty-state__body">Essa tela é montada na Fase 2, junto com a captura rápida.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIDA ---------------------------------------------------------- -->
+    <section id="screen-vida" class="screen" aria-label="Vida">
+      <header class="screen-header">
+        <h1>Vida</h1>
+      </header>
+
+      <div class="empty-state">
+        <div class="empty-state__icon" style="background: var(--color-guardado-soft); color: var(--color-guardado);">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-4.35-9.5-8.5C.87 9.14 2.5 5.5 6 5.5c2 0 3.5 1.2 4 2.5.5-1.3 2-2.5 4-2.5 3.5 0 5.13 3.64 3.5 7C19 16.65 12 21 12 21z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+        </div>
+        <div>
+          <p class="empty-state__title">Financeiro, compras, ideias e planos</p>
+          <p class="empty-state__body">Chegam a partir da Fase 6, depois de tarefas, hábitos, rotinas e recorrência.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- MAIS ------------------------------------------------------- -->
+    <section id="screen-mais" class="screen" aria-label="Mais">
+      <header class="screen-header">
+        <h1>Mais</h1>
+      </header>
+
+      <nav class="settings-list" aria-label="Seções futuras">
+        <div class="settings-row settings-row--pending">
+          <span>Hábitos</span>
+          <span class="settings-row__tag">Fase 3</span>
+        </div>
+        <div class="settings-row settings-row--pending">
+          <span>Rotinas</span>
+          <span class="settings-row__tag">Fase 4</span>
+        </div>
+        <div class="settings-row settings-row--pending">
+          <span>Histórico</span>
+          <span class="settings-row__tag">Fase 7</span>
+        </div>
+        <div class="settings-row settings-row--pending">
+          <span>Lixeira</span>
+          <span class="settings-row__tag">Fase 7</span>
+        </div>
+        <div class="settings-row settings-row--pending">
+          <span>Backup</span>
+          <span class="settings-row__tag">Fase 7</span>
+        </div>
+        <div class="settings-row settings-row--pending">
+          <span>Configurações</span>
+          <span class="settings-row__tag">Fase 8</span>
+        </div>
+      </nav>
+
+      <p class="diagnostics-title">Diagnóstico do banco</p>
+      <div id="diagnostics" class="diagnostics">
+        <div class="diag-status">Abrindo banco…</div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- TAB BAR ------------------------------------------------------- -->
+  <nav class="tab-bar" role="tablist" aria-label="Navegação principal">
+    <button class="tab-button tab-button--active" data-tab="hoje" role="tab" aria-selected="true">
+      <svg class="tab-icon" viewBox="0 0 24 24" fill="none"><path d="M12 3l8 6v11a1 1 0 0 1-1 1h-5v-6H10v6H5a1 1 0 0 1-1-1V9l8-6z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+      <span>Hoje</span>
+    </button>
+    <button class="tab-button" data-tab="tarefas" role="tab" aria-selected="false">
+      <svg class="tab-icon" viewBox="0 0 24 24" fill="none"><path d="M5 6h14M5 12h14M5 18h9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M3 6h.01M3 12h.01M3 18h.01" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+      <span>Tarefas</span>
+    </button>
+    <button class="tab-button" data-tab="vida" role="tab" aria-selected="false">
+      <svg class="tab-icon" viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-4.35-9.5-8.5C.87 9.14 2.5 5.5 6 5.5c2 0 3.5 1.2 4 2.5.5-1.3 2-2.5 4-2.5 3.5 0 5.13 3.64 3.5 7C19 16.65 12 21 12 21z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+      <span>Vida</span>
+    </button>
+    <button class="tab-button" data-tab="mais" role="tab" aria-selected="false">
+      <svg class="tab-icon" viewBox="0 0 24 24" fill="none"><circle cx="5" cy="12" r="1.6" fill="currentColor"/><circle cx="12" cy="12" r="1.6" fill="currentColor"/><circle cx="19" cy="12" r="1.6" fill="currentColor"/></svg>
+      <span>Mais</span>
+    </button>
+  </nav>
+
+  <script type="module" src="./app.js"></script>
+</body>
+</html>

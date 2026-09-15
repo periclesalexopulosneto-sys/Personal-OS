@@ -1,0 +1,328 @@
+/* ------------------------------------------------------------------
+   Personal OS — tokens
+   Direção: timeline colorida tipo Structured, mas com paleta mais
+   "masculina" — tons de ferrugem, âmbar, couro e petróleo em vez de
+   pastel. Cor usada com generosidade nos elementos que representam
+   prioridade/categoria, não só como detalhe raro.
+------------------------------------------------------------------ */
+
+:root {
+  /* superfícies — neutro morno, não cinza clínico */
+  --color-bg: #EFEBE3;
+  --color-surface: #FFFFFF;
+  --color-border: #DED7C9;
+
+  /* texto */
+  --color-text: #221F1B;
+  --color-text-secondary: #6B6459;
+  --color-text-tertiary: #A39A8B;
+
+  /* cor de marca — usada com generosidade (cabeçalho, aba ativa, botões) */
+  --color-brand: #1F6F66;
+  --color-brand-soft: #DCEBE8;
+
+  /* semântica de bucket/categoria — cores vivas e "de ferramenta", não pastel */
+  --color-agora: #C1442D;
+  --color-agora-soft: #F3DED8;
+  --color-hoje: #C98A17;
+  --color-hoje-soft: #F4E6C8;
+  --color-depois: #5C6B73;
+  --color-depois-soft: #E1E6E8;
+  --color-guardado: #7C6A4A;
+  --color-guardado-soft: #EBE4D6;
+
+  --color-success: #3E8E5B;
+
+  /* tipografia — San Francisco nativa no iPhone, sem custo de fonte externa */
+  --font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif;
+
+  /* espaçamento */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+
+  /* forma */
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-pill: 999px;
+
+  --tab-bar-height: 56px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-family);
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  overscroll-behavior-y: none;
+}
+
+h1 {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+.app {
+  min-height: 100%;
+  padding-bottom: calc(var(--tab-bar-height) + env(safe-area-inset-bottom, 0px) + var(--space-5));
+}
+
+/* ------------------------------------------------------------------
+   Telas
+------------------------------------------------------------------ */
+
+.screen {
+  display: none;
+  padding: calc(var(--space-6) + env(safe-area-inset-top, 0px)) var(--space-5) var(--space-5);
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+.screen--active {
+  display: block;
+}
+
+.screen-header {
+  margin-bottom: var(--space-5);
+}
+
+.hoje-header {
+  margin-bottom: var(--space-6);
+  position: relative;
+  padding-left: var(--space-4);
+}
+
+.hoje-header::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 4px;
+  bottom: 4px;
+  width: 4px;
+  border-radius: var(--radius-pill);
+  background: linear-gradient(180deg, var(--color-agora), var(--color-hoje), var(--color-brand));
+}
+
+.hoje-greeting {
+  font-size: 27px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 0 0 var(--space-1);
+  color: var(--color-text);
+}
+
+.hoje-date {
+  font-size: 15px;
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+/* ------------------------------------------------------------------
+   Estado vazio — direção, não decoração, mas com um toque de cor
+------------------------------------------------------------------ */
+
+.empty-state {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  display: flex;
+  gap: var(--space-4);
+  align-items: flex-start;
+}
+
+.empty-state__icon {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-md);
+  background: var(--color-brand-soft);
+  color: var(--color-brand);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.empty-state__icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.empty-state__title {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0 0 var(--space-2);
+  color: var(--color-text);
+}
+
+.empty-state__body {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+/* ------------------------------------------------------------------
+   Lista estilo "Configurações" (tela Mais)
+------------------------------------------------------------------ */
+
+.settings-list {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  margin-bottom: var(--space-6);
+}
+
+.settings-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-4) var(--space-4);
+  font-size: 15px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.settings-row:last-child {
+  border-bottom: none;
+}
+
+.settings-row--pending {
+  color: var(--color-text-tertiary);
+}
+
+.settings-row__tag {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-brand);
+  background: var(--color-brand-soft);
+  padding: 3px var(--space-2);
+  border-radius: var(--radius-pill);
+}
+
+/* ------------------------------------------------------------------
+   Diagnóstico do banco (Fase 1 apenas — confirma que o schema abriu)
+------------------------------------------------------------------ */
+
+.diagnostics-title {
+  font-size: 13px;
+  color: var(--color-text-tertiary);
+  margin: 0 0 var(--space-2);
+  padding-left: var(--space-1);
+}
+
+.diagnostics {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-2) var(--space-4);
+}
+
+.diag-status {
+  padding: var(--space-3) 0;
+  font-size: 14px;
+  color: var(--color-text-secondary);
+}
+
+.diag-status--ok {
+  color: var(--color-success);
+  font-weight: 600;
+}
+
+.diag-status--error {
+  color: var(--color-agora);
+  font-weight: 600;
+}
+
+.diag-row {
+  display: flex;
+  justify-content: space-between;
+  padding: var(--space-2) 0;
+  font-size: 13px;
+  border-top: 1px solid var(--color-border);
+  color: var(--color-text-secondary);
+}
+
+.diag-row span:first-child {
+  font-variant-numeric: tabular-nums;
+}
+
+.diag-row span:last-child {
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+/* ------------------------------------------------------------------
+   Tab bar
+------------------------------------------------------------------ */
+
+.tab-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  background: rgba(239, 235, 227, 0.88);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border-top: 1px solid var(--color-border);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  height: calc(var(--tab-bar-height) + env(safe-area-inset-bottom, 0px));
+}
+
+.tab-button {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  background: none;
+  border: none;
+  color: var(--color-text-tertiary);
+  font-family: inherit;
+  font-size: 10.5px;
+  font-weight: 500;
+  padding: 0;
+  cursor: pointer;
+}
+
+.tab-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.tab-button--active {
+  color: var(--color-brand);
+}
+
+.tab-button--active .tab-icon {
+  color: var(--color-brand);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .screen--active {
+    animation: screen-fade 160ms ease-out;
+  }
+}
+
+@keyframes screen-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
